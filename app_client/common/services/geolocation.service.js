@@ -16,5 +16,4 @@
             getPosition: getPosition
         };
     }
-    
 })();
