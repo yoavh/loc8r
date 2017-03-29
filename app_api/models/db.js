@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 
-/*var dbURI = 'mongodb://localhost/Loc8r';*/
-var dbURI = 'mongodb://admin:1234@ds047075.mlab.com:47075/loc8r-dev'
+var dbURI = 'mongodb://localhost/Loc8r';
 if (process.env.NODE_ENV === 'production') {
     dbURI = process.env.MONGOLAB_URI;
 }
@@ -46,4 +45,6 @@ process.on('SIGTERM', function () {
     });
 });
 
+// BRING IN YOUR SCHEMAS & MODELS
 require('./locations');
+require('./users');
