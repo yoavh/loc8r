@@ -1,7 +1,10 @@
+.*
+!/.gitignore
+
 Data1.json
 data.json
 public/angular/loc8r.min.js
-**/.DS_Store
+**/DS_Store
 
 # Dependency directory
 node_modules
