@@ -1,4 +1,12 @@
 Data1.json
 data.json
 public/angular/loc8r.min.js
-.DS_Store
+
+# Hidden files
+.*
+!/.gitignore
+
+# Dependency directory
+node_modules
+# Environment variables
+.env
