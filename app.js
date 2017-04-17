@@ -25,7 +25,7 @@ app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'jade');
 
 var appClientFiles = [
-   'app_client/app.js',
+    'app_client/app.js',
    'app_client/home/home.controller.js',
    'app_client/about/about.controller.js',
    'app_client/common/services/geolocation.service.js',
@@ -36,8 +36,12 @@ var appClientFiles = [
    'app_client/common/footerGeneric/footerGeneric.directive.js',
    'app_client/common/directives/navigation/navigation.directive.js',
    'app_client/common/directives/pageHeader/pageHeader.directive.js',
+   'app_client/common/directives/navigation/navigation.controller.js',
    'app_client/locationDetail/locationDetail.controller.js',
    'app_client/reviewModal/reviewModal.controller.js',
+    'app_client/common/services/authentication.service.js',
+    'app_client/auth/register/register.controller.js',
+    'app_client/auth/login/login.controller.js',
 ];
 /*var uglified = uglifyJs.minify(appClientFiles, {
     compress: false
@@ -80,6 +84,15 @@ app.use(function (req, res, next) {
 });
 
 // error handlers
+// Catch unauthorised errors
+app.use(function (err, req, res, next) {
+    if (err.name === 'UnauthorizedError') {
+        res.status(401);
+        res.json({
+            "message": err.name + ": " + err.message
+        });
+    }
+});
 
 // development error handler
 // will print stacktrace
